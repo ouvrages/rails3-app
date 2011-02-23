@@ -16,10 +16,7 @@ application generators
 
 get "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js",  "public/javascripts/jquery.js"
 get "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js", "public/javascripts/jquery-ui.js"
-run "curl --silent http://github.com/rails/jquery-ujs/raw/master/src/rails.js -o public/javascripts/rails.js"
-unless File.exists? 'public/javascripts/rails.js'
-  raise "failed to download http://github.com/rails/jquery-ujs/raw/master/src/rails.js with curl"
-end
+get "https://github.com/rails/jquery-ujs/raw/master/src/rails.js", "public/javascripts/rails.js"
 
 gsub_file 'config/application.rb', 'config.action_view.javascript_expansions[:defaults] = %w()', 'config.action_view.javascript_expansions[:defaults] = %w(jquery.js jquery-ui.js rails.js)'
 
@@ -32,7 +29,11 @@ layout = <<-LAYOUT
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
-    = yield
+    #header
+      %h1 #{app_name.humanize}
+    #content
+      = yield
+    #footer
 LAYOUT
 
 remove_file "app/views/layouts/application.html.erb"
@@ -41,12 +42,26 @@ create_file "app/views/layouts/application.html.haml", layout
 create_file "log/.gitkeep"
 create_file "tmp/.gitkeep"
 
-run "script/rails generate controller main"
-create_file "app/views/main/index.html.haml"
-route "root :to => \"main#index\""
-
 run "bundle install"
 run "script/rails generate rspec:install"
+
+index = <<-INDEX
+%p Welcome!
+INDEX
+
+run "script/rails generate controller main"
+create_file "app/views/main/index.html.haml", index
+route "root :to => \"main#index\""
+remove_file "public/index.html"
+
+sass = <<-SASS
+@import meyer-reset
+
+SASS
+
+create_file "public/stylesheets/sass/application.sass", sass
+
+get "https://github.com/adamstac/meyer-reset/raw/master/stylesheets/_meyer-reset.sass", "public/stylesheets/sass/_meyer-reset.sass"
 
 git :init
 git :add => "."
