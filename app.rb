@@ -2,6 +2,7 @@ gem "factory_girl_rails", ">= 1.0.0", :group => :test
 gem "factory_girl_generator", ">= 0.0.1", :group => [:development, :test]
 gem "haml-rails", ">= 0.3.4"
 gem "rspec-rails", ">= 2.2.1", :group => [:development, :test]
+gem "yaml_db"
 
 generators = <<-GENERATORS
 
@@ -45,5 +46,5 @@ run "script/rails generate rspec:install"
 
 git :init
 git :add => "."
-git :commit => "-m 'Generated app with RSpec, Factory Girl, Haml, and jQuery'"
+git :commit => "-m 'Generated app with RSpec, Factory Girl, Haml, jQuery and yaml_db'"
 

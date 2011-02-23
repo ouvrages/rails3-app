@@ -1,5 +1,5 @@
-Rails 3, RSpec, Fabrication or Factory Girl, Haml, and jQuery
-=============================================================
+Rails 3, RSpec, Fabrication or Factory Girl, Haml, jQuery and yaml_db
+=====================================================================
 
 # Please note
 
