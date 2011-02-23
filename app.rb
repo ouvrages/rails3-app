@@ -65,5 +65,5 @@ get "https://github.com/adamstac/meyer-reset/raw/master/stylesheets/_meyer-reset
 
 git :init
 git :add => "."
-git :commit => "-m 'Generated app with RSpec, Factory Girl, Haml, jQuery and yaml_db'"
+git :commit => "-m 'Generated app with RSpec, Factory Girl, Haml, jQuery, yaml_db and meyer-reset'"
 
