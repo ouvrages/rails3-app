@@ -41,6 +41,10 @@ create_file "app/views/layouts/application.html.haml", layout
 create_file "log/.gitkeep"
 create_file "tmp/.gitkeep"
 
+run "script/rails generate controller main"
+create_file "app/views/main/index.html.haml"
+route "root :to => \"main#index\""
+
 run "bundle install"
 run "script/rails generate rspec:install"
 
