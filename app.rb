@@ -45,8 +45,6 @@ docs = <<-DOCS
 Run the following commands to complete the setup of #{app_name.humanize}:
 
 cd #{app_name}
-rvm use --create --rvmrc default@#{app_name}
-gem install bundler
 bundle install
 script/rails generate rspec:install
 
