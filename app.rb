@@ -40,17 +40,10 @@ create_file "app/views/layouts/application.html.haml", layout
 create_file "log/.gitkeep"
 create_file "tmp/.gitkeep"
 
+run "bundle install"
+run "script/rails generate rspec:install"
+
 git :init
 git :add => "."
+git :commit => "-m 'Generated app with RSpec, Factory Girl, Haml, and jQuery'"
 
-docs = <<-DOCS
-
-Run the following commands to complete the setup of #{app_name.humanize}:
-
-cd #{app_name}
-bundle install
-script/rails generate rspec:install
-
-DOCS
-
-log docs
