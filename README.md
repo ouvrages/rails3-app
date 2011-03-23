@@ -16,7 +16,7 @@ local file system instead of their github uris as shown below.
 Easily generate a Rails 3 application with RSpec, Factory Girl, Haml, and
 jQuery in one line:
 
-    % rails new my_app -J -T -m https://github.com/ouvrages/rails3-app/raw/master/app.rb
+    % rails new my_app -J -T -m https://github.com/ouvrages/rails3-app/raw/ouvrages_engine/app.rb
 
 ## Need Cucumber?
 
